@@ -31,7 +31,7 @@ const Home = () => {
   return (<>
     <div className='d-flex'>
       <h3 className='text-center'>Movie Library</h3>
-      <Link href='/addmovie'><button className='btn btn-secondary mx-5'>Add Movie</button></Link>
+      <Link href='/AddMovie'><button className='btn btn-secondary mx-5'>Add Movie</button></Link>
     </div>
     <div className={styles.show_movies}>
       {movies.map(movie => {

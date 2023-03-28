@@ -54,7 +54,8 @@ const Detils = ({ movie }) => {
                                 <p>{movie.overview}</p>
                             </div>
                             <div className='text-center'>
-                                <Link href={movie.id + '/editmovie'}><button className='btn btn-secondary'>Edit Movie</button></Link>
+                            <Link href={{ pathname: '/EditMovie', query: { id: movie.id } }}>
+<button className='btn btn-secondary'>Edit Movie</button></Link>
                             </div>
 
                         </div>
