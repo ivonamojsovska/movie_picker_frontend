@@ -37,7 +37,7 @@ const Detils = ({ movie }) => {
     return (
         <div className='container'>
             <div className='row justify-content-center'>
-                <div className='col-6 d-flex justify-content-center'>
+                <div className='col-sm-12 col-md-6 d-flex justify-content-center'>
                     <div className='row'>
                         <div className='col-4'>
                             <div className='movie_image' >

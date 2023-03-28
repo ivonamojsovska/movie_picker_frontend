@@ -2,8 +2,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
+
+
 const AddMovie = () => {
-    const [formData, setFormData] = useState({
+    const router = useRouter();
+
+    const [movie, setMovie] = useState({
         title: '',
         overview: '',
         release_date: '',
@@ -11,19 +15,17 @@ const AddMovie = () => {
         image: '',
     });
 
-    const router = useRouter();
+
 
     const handleChange = (event) => {
-        // const { name, value } = event.target;
-        setFormData({ ...formData, [event.target.name]: event.targetvalue });
+        setMovie({ ...movie, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('http://localhost:8000/moviepicker', formData);
-            console.log('Movie added');
-            setFormData({
+            await axios.post('http://127.0.0.1:8000/moviepicker', movie);
+            setMovie({
                 title: '',
                 overview: '',
                 release_date: '',
@@ -45,7 +47,7 @@ const AddMovie = () => {
                     className='form-control'
                     id='title'
                     name='title'
-                    value={formData.title}
+                    value={movie.title}
                     onChange={handleChange}
                 />
             </div>
@@ -56,7 +58,7 @@ const AddMovie = () => {
                     id='overview'
                     name='overview'
                     rows='3'
-                    value={formData.overview}
+                    value={movie.overview}
                     onChange={handleChange}
                 ></textarea>
             </div>
@@ -67,7 +69,7 @@ const AddMovie = () => {
                     className='form-control'
                     id='release_date'
                     name='release_date'
-                    value={formData.release_date}
+                    value={movie.release_date}
                     onChange={handleChange}
                 />
             </div>
@@ -79,7 +81,7 @@ const AddMovie = () => {
                     className='form-control'
                     id='rating'
                     name='rating'
-                    value={formData.rating}
+                    value={movie.rating}
                     onChange={handleChange}
                 />
             </div>
@@ -90,7 +92,7 @@ const AddMovie = () => {
                     className='form-control'
                     id='image'
                     name='image'
-                    value={formData.image}
+                    value={movie.image}
                     onChange={handleChange}
                 />
             </div>
