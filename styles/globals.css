@@ -37,3 +37,8 @@ footer {
   color: #777;
   border-top: 1px solid #eaeaea;
 }
+
+.movie_image img {
+  max-width: 100%;
+  max-height: 20rem;
+}

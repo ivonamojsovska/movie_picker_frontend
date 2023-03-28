@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Link from 'next/link'
 
 export const getStaticPaths = async () => {
     const data = await axios.get('http://127.0.0.1:8000/moviepicker').then((response) => {
@@ -34,18 +35,33 @@ export const getStaticProps = async (context) => {
 const Detils = ({ movie }) => {
 
     return (
-        <div>
-            <div className='card text-center' style={{ "width": "18rem" }} >
-                <img className='card-img-top' src={movie.image} />
-                <div className='card-body'>
-                    <div className='card-title'>
-                        <h3>{movie.title}</h3>
-                        <p>{movie.release_date}</p>
+        <div className='container'>
+            <div className='row justify-content-center'>
+                <div className='col-6 d-flex justify-content-center'>
+                    <div className='row'>
+                        <div className='col-4'>
+                            <div className='movie_image' >
+                                <img src={movie.image} />
+                            </div>
+                        </div>
+                        <div className='col-8'>
+                            <div className='m-3'>
+                                <h3 className='text-center'>{movie.title}</h3>
+                                <div className='d-flex justify-content-center'>
+                                    <h6>Rating: {movie.rating}</h6>
+                                    <h6>Release Date: {movie.release_date}</h6>
+                                </div>
+                                <p>{movie.overview}</p>
+                            </div>
+                            <div className='text-center'>
+                                <Link href={movie.id + '/editmovie'}><button className='btn btn-secondary'>Edit Movie</button></Link>
+                            </div>
+
+                        </div>
                     </div>
-                    <p className=''></p>
-                    <p className='card-text'>{movie.overview}</p>
                 </div>
             </div>
+
         </div>);
 }
 
