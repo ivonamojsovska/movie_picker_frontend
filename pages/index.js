@@ -36,8 +36,8 @@ const Home = () => {
     <div className={styles.show_movies}>
       {movies.map(movie => {
         return (
-          <div>
-            <Link href={`/${movie.id}`} key={movie.id}>
+          <div key={movie.id}>
+            <Link href={`/${movie.id}`}>
               <div className='card text-center' style={{ "width": "18rem" }} >
                 <img className='card-img-top' src={movie.image} />
                 <div className='card-body'>

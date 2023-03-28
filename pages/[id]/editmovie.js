@@ -3,67 +3,64 @@ import Head from 'next/head';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
+
 const EditMovie = () => {
     const router = useRouter();
-    const [movie, setMovie] = useState(null);
-    const [formData, setFormData] = useState({
-        title: '',
-        overview: '',
-        release_date: '',
-        rating: '',
-        image: '',
-    });
+    const { id } = router.query
+
+    const [movie, setMovie] = useState({ title: '', overview: '', release_date: '', rating: '', image: '' })
+    const [editMovie, setEditMovie] = useState(null)
+
+
+    const getMovie = async () => {
+        const res = await axios.get(`http://127.0.0.1:8000/moviepicker/${id}`)
+        const data = await res.data
+
+        setEditMovie(data)
+        setMovie({
+            title: data.title,
+            overview: data.overview,
+            release_date: data.release_date,
+            rating: data.rating,
+            image: data.image,
+        })
+    }
 
     useEffect(() => {
-        if (router.query.id) {
-            axios
-                .get(`http://localhost:8000/moviepicker/${router.query.id}`)
-                .then((response) => {
-                    setMovie(response.data);
-                    setFormData({
-                        title: response.data.title,
-                        overview: response.data.overview,
-                        release_date: response.data.release_date,
-                        rating: response.data.rating,
-                        image: response.data.image,
-                    });
-                })
-                .catch((err) => console.error(err));
-        }
-    }, [router.query.id]);
+        getMovie()
+    }, [id])
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
+
+    const handleChange = (event) => {
+        setMovie({ ...movie, [event.target.name]: event.target.value })
+
     };
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedMovie = formData;
         await axios.put(
-            `http://localhost:8000/moviepicker/${router.query.id}`,
-            updatedMovie
+            `http://localhost:8000/moviepicker/${id}`,
+            movie
         );
         router.push('/');
     };
-
-    if (!movie) {
-        return <div>loadin</div>;
-    }
 
     return (
         <>
             <Head>
                 <title>Edit Movie</title>
             </Head>
-            <h3 className="text-center">Edit Movie</h3>
+            <h3 className="text-center">Edit {movie.title}</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="title">Title</label>
                     <input
                         type="text"
                         className="form-control"
-                        id="title"
-                        value={formData.title}
+                        name="title"
+                        value={movie.title}
                         onChange={handleChange}
                     />
                 </div>
@@ -71,8 +68,8 @@ const EditMovie = () => {
                     <label htmlFor="overview">Overview</label>
                     <textarea
                         className="form-control"
-                        id="overview"
-                        value={formData.overview}
+                        name="overview"
+                        value={movie.overview}
                         onChange={handleChange}
                     ></textarea>
                 </div>
@@ -81,8 +78,8 @@ const EditMovie = () => {
                     <input
                         type="date"
                         className="form-control"
-                        id="release_date"
-                        value={formData.release_date}
+                        name="release_date"
+                        value={movie.release_date}
                         onChange={handleChange}
                     />
                 </div>
@@ -91,8 +88,8 @@ const EditMovie = () => {
                     <input
                         type="number"
                         className="form-control"
-                        id="rating"
-                        value={formData.rating}
+                        name="rating"
+                        value={movie.rating}
                         onChange={handleChange}
                     />
                 </div>
@@ -101,8 +98,8 @@ const EditMovie = () => {
                     <input
                         type="text"
                         className="form-control"
-                        id="image"
-                        value={formData.image}
+                        name="image"
+                        value={movie.image}
                         onChange={handleChange}
                     />
                 </div>
