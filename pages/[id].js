@@ -35,8 +35,17 @@ const Detils = ({ movie }) => {
 
     return (
         <div>
-            <h1>Movie</h1>
-            <h3>{movie.title}</h3>
+            <div className='card text-center' style={{ "width": "18rem" }} >
+                <img className='card-img-top' src={movie.image} />
+                <div className='card-body'>
+                    <div className='card-title'>
+                        <h3>{movie.title}</h3>
+                        <p>{movie.release_date}</p>
+                    </div>
+                    <p className=''></p>
+                    <p className='card-text'>{movie.overview}</p>
+                </div>
+            </div>
         </div>);
 }
 

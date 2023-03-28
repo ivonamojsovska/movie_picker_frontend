@@ -19,7 +19,10 @@ const Home = () => {
 
 
   return (<>
-    <h3 className='text-center'>Movie Library</h3>
+    <div className='d-flex'>
+      <h3 className='text-center'>Movie Library</h3>
+      <Link href='/addmovie'><button className='btn btn-secondary mx-5'>Add Movie</button></Link>
+    </div>
     <div className={styles.show_movies}>
       {movies.map(movie => {
         return (
