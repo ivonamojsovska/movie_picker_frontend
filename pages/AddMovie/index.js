@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const AddMovie = () => {
   const [formData, setFormData] = useState({
@@ -9,29 +10,29 @@ const AddMovie = () => {
     rating: '',
     image: '',
   });
+  const router = useRouter();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post('http://localhost:8000/moviepicker/', formData)
-      .then((response) => {
-        console.log(response.data);
-        setFormData({
-          title: '',
-          overview: '',
-          release_date: '',
-          rating: '',
-          image: '',
-        });
-      })
-      .catch((error) => {
-        console.error(error);
+    try {
+      await axios.post('http://localhost:8000/moviepicker', formData);
+      console.log('Movie added');
+      setFormData({
+        title: '',
+        overview: '',
+        release_date: '',
+        rating: '',
+        image: '',
       });
+      router.push('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -100,6 +101,8 @@ const AddMovie = () => {
 };
 
 export default AddMovie;
+
+
 
 
 
