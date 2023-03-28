@@ -15,8 +15,6 @@ const AddMovie = () => {
         image: '',
     });
 
-
-
     const handleChange = (event) => {
         setMovie({ ...movie, [event.target.name]: event.target.value });
     };
