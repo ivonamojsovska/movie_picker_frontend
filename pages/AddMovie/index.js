@@ -30,7 +30,7 @@ const AddMovie = () => {
                 rating: '',
                 image: '',
             });
-            //router.push('/');
+            router.push('/');
         } catch (error) {
             console.error(error);
         }
