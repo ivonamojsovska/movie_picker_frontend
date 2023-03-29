@@ -6,9 +6,6 @@ export const getStaticPaths = async () => {
         return response.data
     }).catch(err => console.log(err))
 
-    console.log(data)
-
-
     const paths = data.map((movie) => {
         return {
             params: { id: movie.id.toString() }
@@ -29,7 +26,6 @@ export const getStaticProps = async (context) => {
     return {
         props: { movie: data }
     }
-
 }
 
 const Detils = ({ movie }) => {
@@ -54,8 +50,9 @@ const Detils = ({ movie }) => {
                                 <p>{movie.overview}</p>
                             </div>
                             <div className='text-center'>
-                            <Link href={{ pathname: '/EditMovie', query: { id: movie.id } }}>
-<button className='btn btn-secondary'>Edit Movie</button></Link>
+                                <Link href={movie.id + '/editmovie'}>
+                                    <button className='btn btn-secondary'>Edit Movie</button>
+                                </Link>
                             </div>
 
                         </div>

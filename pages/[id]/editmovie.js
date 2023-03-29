@@ -44,7 +44,7 @@ const EditMovie = () => {
             `http://localhost:8000/moviepicker/${id}`,
             movie
         );
-        router.push('/');
+        router.push(`/${id}`);
     };
 
     return (
