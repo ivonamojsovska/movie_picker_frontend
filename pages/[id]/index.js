@@ -20,8 +20,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id
-    const res = await fetch(`http://127.0.0.1:8000/moviepicker/${id}`)
-    const data = await res.json()
+    const res = await axios.get(`http://127.0.0.1:8000/moviepicker/${id}`)
+    const data = await res.data
 
     return {
         props: { movie: data }
