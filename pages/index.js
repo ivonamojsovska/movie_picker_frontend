@@ -24,32 +24,28 @@ const Home = () => {
     })
   }
 
-  const wishlistArr = []
+
   const handleWishlist = (movie) => {
-    wishlistArr.push(movie.title)
-    console.log(wishlistArr)
-
+    setWishlist([...wishlist, movie.title])
   }
-  console.log(wishlistArr)
-
-
-
-
-
-
-
 
 
   useEffect(() => {
     getMovies()
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem('movie', JSON.stringify(wishlist))
+  }, [wishlist])
+
 
   return (<>
-    <div className='d-flex'>
-      <h3 className='text-center'>Movie Library</h3>
-      <Link href='/addmovie'><button className='btn btn-secondary mx-5'>Add Movie</button></Link>
-      {/* <Link href={{ pathname: '/wishlist', query: { state: wishlist, arr: wishlistArr } }}><button>Wishlist</button></Link> */}
+    <div className='text-center m-5'>
+      <h3>Movie Library</h3>
+      <div className='d-flex justify-content-center gap-3'>
+        <Link href='/addmovie'><button className='btn btn-secondary'>Add Movie</button></Link>
+        <Link href={{ pathname: '/wishlist', query: wishlist }}><button className='btn btn-secondary'>See Your Wishlist</button></Link>
+      </div>
     </div>
     <div className={styles.show_movies}>
       {movies.map(movie => {
@@ -65,14 +61,11 @@ const Home = () => {
             </Link>
             <div className='d-flex justify-content-center gap-5 mt-3'>
               <button className='btn btn-danger' onClick={(e) => { handleDelete(e, movie) }} value={movie.id}>Delete</button>
-              <button className='btn btn-secondary' onClick={() => { handleWishlist(movie) }}>Wishlist</button>
+              <button className='btn btn-secondary' onClick={() => { handleWishlist(movie) }}>Add to Wishlist</button>
             </div>
           </div>
         )
       })}
-    </div>
-    <div>
-      <h3>Wishlist: {wishlist.title}</h3>
     </div>
   </>);
 }

@@ -5,19 +5,19 @@ import { useState } from 'react'
 const Wishlist = () => {
     const router = useRouter()
     const query = router.query
-    const title = query.title
-
-    const wishlist = query.wishlistArr
+    const queryArr = Object.values(query)
+    console.log(queryArr)
 
 
 
 
     return (<>
-        {
-            <h1>{title}</h1>
-        }
 
-
+        {queryArr.map(title => {
+            return (
+                <li>{title}</li>
+            )
+        })}
 
     </>
     );
