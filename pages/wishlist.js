@@ -26,16 +26,16 @@ const Wishlist = () => {
         </nav>
         <div className='container'>
             <div className='row justify-content-center'>
-                <div className='col-sm-8 col-md-6 text-center'>
+                <div className='col-sm-8 col-md-6 text-center m-3'>
                     <h3>Wish List</h3>
                 </div>
             </div>
             <div className='row justify-content-center text-center'>
                 <div className='col-sm-8 col-md-6'>
-                    <ul className=''>
+                    <ul className='list-unstyled'>
                         {wishlist.map(title => {
                             return (
-                                <li>{title}</li>
+                                <li><h5>{title}</h5></li>
                             )
                         })}
                     </ul>

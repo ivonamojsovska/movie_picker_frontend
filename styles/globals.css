@@ -29,8 +29,7 @@ nav a {
 nav a:hover {
   border-bottom: 2px solid #de2f2f;
 }
-footer {
-  display: block;
+.footer {
   text-align: center;
   padding: 30px 0;
   margin-top: 60px;
