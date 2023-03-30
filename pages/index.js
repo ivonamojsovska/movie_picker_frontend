@@ -30,27 +30,30 @@ const Home = () => {
     setWishlist([...wishlist, movie.title])
   }
 
-
   useEffect(() => {
     getMovies()
   }, [])
 
   useEffect(() => {
-    const data = window.localStorage.getItem('wishlist')
-    setWishlistData(...data, data)
+    const data = sessionStorage.getItem('wishlist')
+    if (data) { setWishlistData(data) }
   }, [])
 
   useEffect(() => {
-    window.localStorage.setItem('wishlist', JSON.stringify(wishlist))
+    sessionStorage.setItem('wishlist', wishlist)
   }, [wishlist])
 
 
   return (<>
+    <nav>
+      <Link href="/">Home</Link>
+      <Link href="/about">About</Link>
+      <Link href={{ pathname: '/wishlist', query: wishlist }}>Wishlist</Link>
+    </nav>
     <div className='text-center m-5'>
       <h3>Movie Library</h3>
       <div className='d-flex justify-content-center gap-3'>
         <Link href='/addmovie'><button className='btn btn-secondary'>Add Movie</button></Link>
-        <Link href={{ pathname: '/wishlist', query: wishlist }}><button className='btn btn-secondary'>See Your Wishlist</button></Link>
       </div>
     </div>
     <div className={styles.show_movies}>
