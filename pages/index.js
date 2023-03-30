@@ -11,6 +11,7 @@ const Home = () => {
   const [movies, setMovies] = useState([])
   const [wishlist, setWishlist] = useState([])
   const [wishlistData, setWishlistData] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   const getMovies = () => {
     axios.get('http://localhost:8000/moviepicker').then(response => setMovies(response.data)).catch(err => console.error(err))
@@ -43,21 +44,30 @@ const Home = () => {
     sessionStorage.setItem('wishlist', wishlist)
   }, [wishlist])
 
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   return (<>
-    <nav>
-      <Link href="/">Home</Link>
-      <Link href="/about">About</Link>
-      <Link href={{ pathname: '/wishlist', query: wishlist }}>Wish List</Link>
+    <nav className='d-flex justify-content-between'>
+      <div className='search_bar'>
+        <input type="text" placeholder="Search movies" onChange={handleSearch} className={styles.searchBar} />
+      </div>
+      <div>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href='/addmovie'>Add Movie</Link>
+        <Link href={{ pathname: '/wishlist', query: wishlist }}>Wish List</Link>
+      </div>
     </nav>
     <div className='text-center m-5'>
       <h3>Movie Library</h3>
-      <div className='d-flex justify-content-center gap-3'>
-        <Link href='/addmovie'><button className='btn btn-secondary'>Add Movie</button></Link>
-      </div>
     </div>
     <div className={styles.show_movies}>
-      {movies.map(movie => {
+      {filteredMovies.map(movie => {
         return (
           <div key={movie.id}>
             <Link href={`/${movie.id}`}>

@@ -24,10 +24,10 @@ nav {
   border-bottom: 1px solid #ddd;
 }
 nav a {
-  margin-left: 12px;
+  margin-left: 20px;
 }
-nav .logo {
-  margin-right: auto;
+nav a:hover {
+  border-bottom: 2px solid #de2f2f;
 }
 footer {
   display: block;
@@ -46,4 +46,10 @@ footer {
 .btn-danger {
   background-color: #de2f2f;
   border: #de2f2f;
+}
+
+.search_bar input {
+  border-radius: 30px;
+  padding: 5px;
+  border: #777;
 }

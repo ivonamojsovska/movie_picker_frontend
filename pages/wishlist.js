@@ -21,6 +21,7 @@ const Wishlist = () => {
         <nav>
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
+            <Link href='/addmovie'>Add Movie</Link>
             <Link href='/wishlist'>Wish List</Link>
         </nav>
         <div className='container'>

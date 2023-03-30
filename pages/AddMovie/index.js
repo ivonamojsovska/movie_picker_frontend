@@ -24,7 +24,7 @@ const AddMovie = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            await axios.post('http://127.0.0.1:8000/moviepicker', movie).then((res) => {
+            await axios.post('http://localhost:8000/moviepicker', movie).then((res) => {
                 console.log(res)
             })
             event.target.reset()
@@ -34,11 +34,13 @@ const AddMovie = () => {
         }
     };
 
+
     return (
         <>
             <nav>
                 <Link href="/">Home</Link>
                 <Link href="/about">About</Link>
+                <Link href='/addmovie'>Add Movie</Link>
                 <Link href='/wishlist'>Wish List</Link>
             </nav>
             <div className='container'>
