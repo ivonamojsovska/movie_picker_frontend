@@ -48,7 +48,7 @@ const Home = () => {
     <nav>
       <Link href="/">Home</Link>
       <Link href="/about">About</Link>
-      <Link href={{ pathname: '/wishlist', query: wishlist }}>Wishlist</Link>
+      <Link href={{ pathname: '/wishlist', query: wishlist }}>Wish List</Link>
     </nav>
     <div className='text-center m-5'>
       <h3>Movie Library</h3>
