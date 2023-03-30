@@ -10,6 +10,7 @@ import Link from 'next/link'
 const Home = () => {
   const [movies, setMovies] = useState([])
   const [wishlist, setWishlist] = useState([])
+  const [wishlistData, setWishlistData] = useState([])
 
   const getMovies = () => {
     axios.get('http://localhost:8000/moviepicker').then(response => setMovies(response.data)).catch(err => console.error(err))
@@ -35,7 +36,12 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('movie', JSON.stringify(wishlist))
+    const data = window.localStorage.getItem('wishlist')
+    setWishlistData(...data, data)
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('wishlist', JSON.stringify(wishlist))
   }, [wishlist])
 
 

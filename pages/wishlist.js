@@ -1,15 +1,13 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 const Wishlist = () => {
+
     const router = useRouter()
     const query = router.query
     const queryArr = Object.values(query)
     console.log(queryArr)
-
-
-
 
     return (<>
 
