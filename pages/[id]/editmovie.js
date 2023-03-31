@@ -42,7 +42,7 @@ const EditMovie = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios.put(
-            `http://localhost:8000/moviepicker/${id}`,
+            `https://moviepickerbackend.onrender.com/moviepicker/${id}`,
             movie
         );
         router.push(`/${id}`);
