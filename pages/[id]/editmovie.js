@@ -41,11 +41,16 @@ const EditMovie = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(
-            `https://moviepickerbackend.onrender.com/moviepicker/${id}`,
-            movie
-        );
-        await router.push(`/${id}`);
+        try {
+            await axios.put(
+                `https://moviepickerbackend.onrender.com/moviepicker/${id}`,
+                movie
+            );
+            await router.push(`/${id}`);
+        } catch (err) {
+            console.log(err)
+        }
+
     };
 
     return (
