@@ -2,7 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 
 export const getStaticPaths = async () => {
-    const data = await axios.get('http://127.0.0.1:8000/moviepicker').then((response) => {
+    const data = await axios.get('https://moviepickerbackend.onrender.com/moviepicker/').then((response) => {
         return response.data
     }).catch(err => console.log(err))
 
@@ -20,7 +20,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id
-    const res = await axios.get(`http://127.0.0.1:8000/moviepicker/${id}`)
+    const res = await axios.get(`https://moviepickerbackend.onrender.com/moviepicker/${id}`)
     const data = await res.data
 
     return {
