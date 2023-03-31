@@ -1,7 +1,10 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import { jsxDEV } from 'react/jsx-dev-runtime';
 
 export default function Document() {
+  if (process.env.NODE_ENV === 'development') {
+    // use jsxDEV here for development only
+  }
+
   return (
     <Html lang="en">
       <Head />
