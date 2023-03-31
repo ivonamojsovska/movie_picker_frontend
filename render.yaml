@@ -1,0 +1,5 @@
+services:
+  - name: web
+    buildCommand: docker build -t web .
+    startCommand: docker run -p 8080:3000 web
+    healthCheckPath: /
