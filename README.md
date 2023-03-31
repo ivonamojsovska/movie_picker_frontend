@@ -14,6 +14,7 @@ Install my-project
 
 Front end
 ```bash
+    "installing all dependencies"
     "npm I"
     "and npm run dev to start project"
 ```
