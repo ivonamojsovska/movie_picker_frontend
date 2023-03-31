@@ -68,26 +68,30 @@ const Home = () => {
     <div className='text-center m-5'>
       <h3>Movie Library</h3>
     </div>
-    <div className={styles.show_movies}>
-      {filteredMovies.map(movie => {
-        return (
-          <div key={movie.id}>
-            <Link href={`/${movie.id}`}>
-              <div className='card text-center' style={{ "width": "18rem" }} >
-                <img className='card-img-top' src={movie.image} />
-                <div className='card-body'>
-                  <h3 className='card-title'>{movie.title}</h3>
+    {filteredMovies.length > 0 ?
+      <div className={styles.show_movies}>
+        {filteredMovies.map(movie => {
+          return (
+            <div key={movie.id}>
+              <Link href={`/${movie.id}`}>
+                <div className='card text-center' style={{ "width": "18rem" }} >
+                  <img className='card-img-top' src={movie.image} />
+                  <div className='card-body'>
+                    <h3 className='card-title'>{movie.title}</h3>
+                  </div>
                 </div>
+              </Link>
+              <div className='d-flex justify-content-center gap-5 mt-3'>
+                <button className='btn btn-danger' onClick={(e) => { handleDelete(e, movie) }} value={movie.id}>Delete</button>
+                <button className='btn btn-secondary' onClick={() => { handleWishlist(movie) }}>Add to Wishlist</button>
               </div>
-            </Link>
-            <div className='d-flex justify-content-center gap-5 mt-3'>
-              <button className='btn btn-danger' onClick={(e) => { handleDelete(e, movie) }} value={movie.id}>Delete</button>
-              <button className='btn btn-secondary' onClick={() => { handleWishlist(movie) }}>Add to Wishlist</button>
             </div>
-          </div>
-        )
-      })}
-    </div>
+          )
+        })}
+      </div> :
+      <div className={styles.no_movies}>
+        <h3>No movies found</h3>
+      </div>}
   </>);
 }
 
