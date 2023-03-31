@@ -45,7 +45,7 @@ const EditMovie = () => {
             `https://moviepickerbackend.onrender.com/moviepicker/${id}`,
             movie
         );
-        router.push(`/${id}`);
+        await router.push(`/${id}`);
     };
 
     return (
