@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { jsxDEV } from 'react/jsx-dev-runtime';
 
 const About = () => {
     return (

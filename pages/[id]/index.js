@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Link from 'next/link'
+import { jsxDEV } from 'react/jsx-dev-runtime';
 
 export const getStaticPaths = async () => {
     const data = await axios.get('https://moviepickerbackend.onrender.com/moviepicker/').then((response) => {

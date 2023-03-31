@@ -3,7 +3,7 @@ import Head from 'next/head';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
-
+import { jsxDEV } from 'react/jsx-dev-runtime';
 
 const EditMovie = () => {
     const router = useRouter();

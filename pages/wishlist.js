@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-
+import { jsxDEV } from 'react/jsx-dev-runtime';
 
 const Wishlist = () => {
 

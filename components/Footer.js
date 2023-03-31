@@ -1,3 +1,4 @@
+import { jsxDEV } from 'react/jsx-dev-runtime';
 const Footer = () => {
     return (
         <div className="row footer">

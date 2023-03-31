@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from 'next/router'
-
+import { jsxDEV } from 'react/jsx-dev-runtime';
 const NotFound = () => {
 
     const router = useRouter()

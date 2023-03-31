@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import Head from 'next/head'
 import Layout from '@/components/Layout'
+import { jsxDEV } from 'react/jsx-dev-runtime';
 
 export default function App({ Component, pageProps }) {
   return (<>
