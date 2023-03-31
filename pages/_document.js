@@ -6,6 +6,12 @@ export default function Document() {
   }
 
   return (
-    <h1>Hi</h1>
+    <Html lang="en">
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
   )
 }

@@ -1,6 +1,6 @@
 services:
 - type: web
-  name: moviepicker
+  name: next-js
   env: node
   plan: starter
   buildCommand: yarn; yarn build
