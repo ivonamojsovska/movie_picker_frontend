@@ -9,7 +9,7 @@ const EditMovie = () => {
     const router = useRouter();
     const { id } = router.query
 
-    const [movie, setMovie] = useState({ title: '', overview: '', release_date: '', rating: '', image: '' })
+    const [movie, setMovie] = useState({ title: '', overview: '', release_date: '', rating: 0, image: '' })
     const [editMovie, setEditMovie] = useState(null)
 
 
