@@ -1,5 +1,11 @@
 services:
-  - name: web
-    buildCommand: docker build -t web .
-    startCommand: docker run -p 8080:3000 web
-    healthCheckPath: /
+- type: web
+  name: moviepicker
+  env: node
+  plan: starter
+  buildCommand: yarn; yarn build
+  startCommand: yarn start
+  autoDeploy: false
+  envVars:
+  - key: NODE_ENV
+    value: production
