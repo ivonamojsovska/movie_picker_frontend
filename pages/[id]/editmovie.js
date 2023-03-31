@@ -14,7 +14,7 @@ const EditMovie = () => {
 
 
     const getMovie = async () => {
-        const res = await axios.get(`http://127.0.0.1:8000/moviepicker/${id}`)
+        const res = await axios.get(`https://moviepickerbackend.onrender.com/moviepicker/${id}`)
         const data = await res.data
 
         setEditMovie(data)

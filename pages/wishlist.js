@@ -8,7 +8,6 @@ const Wishlist = () => {
     const router = useRouter()
     const query = router.query
     const queryArr = Object.values(query)
-    console.log(queryArr)
 
     const [wishlist, setWishlist] = useState([])
 

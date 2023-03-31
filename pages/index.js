@@ -14,11 +14,11 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('')
 
   const getMovies = () => {
-    axios.get('http://localhost:8000/moviepicker').then(response => setMovies(response.data)).catch(err => console.error(err))
+    axios.get('https://moviepickerbackend.onrender.com/moviepicker').then(response => setMovies(response.data)).catch(err => console.error(err))
   }
 
   const handleDelete = (e, deletedMovie) => {
-    axios.delete(`http://localhost:8000/moviepicker/${e.target.value}`).then(response => {
+    axios.delete(`https://moviepickerbackend.onrender.com/moviepicker/${e.target.value}`).then(response => {
       console.log(response)
       setMovies(movies.filter(movie => {
         return movie.id !== deletedMovie.id

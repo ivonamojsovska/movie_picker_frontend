@@ -24,7 +24,7 @@ const AddMovie = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            await axios.post('http://localhost:8000/moviepicker', movie).then((res) => {
+            await axios.post('https://moviepickerbackend.onrender.com/moviepicker', movie).then((res) => {
                 console.log(res)
             })
             event.target.reset()
